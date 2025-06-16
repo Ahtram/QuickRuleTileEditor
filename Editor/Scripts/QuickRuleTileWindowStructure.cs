@@ -52,7 +52,7 @@ namespace QuickRuleTileEditor
             mainContainer.Add(CreateCreationModeContainer());
             mainContainer.Add(CreateEditModeContainer());
 
-            inspectorSplitView 
+            inspectorSplitView
                 = new TwoPaneSplitView(1, QuickRuleTileConfig.initialInspectorSize, TwoPaneSplitViewOrientation.Horizontal);
             inspectorSplitView.Add(mainContainer);
             inspectorSplitView.Add(inspector);
@@ -170,6 +170,43 @@ namespace QuickRuleTileEditor
             var clearSpritesButton = new Button(ClearSprites) { text = "Clear Sprites" };
             clearSpritesButton.AddToClassList("clear-sprites-button");
             header.Add(clearSpritesButton);
+
+            //[Hack]
+            var setSpriteSize8 = new Button(() => SetSpriteDisplaySize(8))
+            {
+                text = "8",
+                tooltip = "Set sprite display size to 8 x 8 px."
+            };
+            setSpriteSize8.AddToClassList("sprite-display-size8-button");
+            setSpriteSize8.AddToClassList("btn-merged-left");
+            header.Add(setSpriteSize8);
+
+            var setSpriteSize16 = new Button(() => SetSpriteDisplaySize(16))
+            {
+                text = "16",
+                tooltip = "Set sprite display size to 16 x 16 px."
+            };
+            setSpriteSize16.AddToClassList("sprite-display-size16-button");
+            setSpriteSize16.AddToClassList("btn-merged-mid");
+            header.Add(setSpriteSize16);
+
+            var setSpriteSize32 = new Button(() => SetSpriteDisplaySize(32))
+            {
+                text = "32",
+                tooltip = "Set sprite display size to 32 x 32 px."
+            };
+            setSpriteSize32.AddToClassList("sprite-display-size32-button");
+            setSpriteSize32.AddToClassList("btn-merged-mid");
+            header.Add(setSpriteSize32);
+
+            var setSpriteSize64 = new Button(() => SetSpriteDisplaySize(64))
+            {
+                text = "64",
+                tooltip = "Set sprite display size to 64 x 64 px."
+            };
+            setSpriteSize64.AddToClassList("sprite-display-size64-button");
+            setSpriteSize64.AddToClassList("btn-merged-right");
+            header.Add(setSpriteSize64);
 
             return header;
         }
@@ -289,6 +326,9 @@ namespace QuickRuleTileEditor
             {
                 sprite = sprite
             };
+            image.style.width = spriteDisplaySize;
+            image.style.height = spriteDisplaySize;
+
             image.AddToClassList("sprite");
             image.RegisterCallback<ClickEvent>(e => SpriteClicked(sprite));
             image.RegisterCallback<MouseUpEvent>(SpriteMouseUp);

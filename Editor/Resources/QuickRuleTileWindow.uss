@@ -2,10 +2,6 @@
 
 }
 
-.root:last-child {
-    flex-grow: 1;
-}
-
 .hidden {
     display: none;
 }
@@ -50,13 +46,17 @@
 
 .tiles-display__pattern .display-pattern-button,
 .tiles-display__mixed .display-mixed-button,
-.tiles-display__sprite .display-sprite-button {
+.tiles-display__sprite .display-sprite-button,
+.sprite-display-size__8 .sprite-display-size8-button,
+.sprite-display-size__16 .sprite-display-size16-button,
+.sprite-display-size__32 .sprite-display-size32-button,
+.sprite-display-size__64 .sprite-display-size64-button {
     border-color: rgb(103, 147, 196);
     border-bottom-width: 2px;
 }
 
 .sprites-container {
-    min-height: 86;
+    min-height: 86px;
     background-color: rgba(0, 0, 0, 0.2);
     border-color: rgb(100, 100, 100);
     border-width: 1px;
@@ -74,10 +74,10 @@
 
 
 .sprite {
-    width: 64px;
-    height: 64px;
-    margin: 2px;
-    padding: 4px;
+    width: 8px;
+    height: 8px;
+    margin: 0px;
+    padding: 0px;
     border-radius: 8px;
 }
 
@@ -166,7 +166,6 @@
 .edit-info-label {
     flex-grow: 1;
     align-self: stretch;
-    text-align: middle-left;
     -unity-text-align: middle-left;
 }
 

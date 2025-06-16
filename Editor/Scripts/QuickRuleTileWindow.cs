@@ -16,6 +16,7 @@ namespace QuickRuleTileEditor
     {
         [SerializeField] private PatternedRuleTileEditModel model;
         [SerializeField] private TilesDisplayMode displayMode = TilesDisplayMode.Mixed;
+        [SerializeField] private int spriteDisplaySize = 32;
 
         private StyleSheet styleSheet;
         private System.Action<Object> objectPickerCallback;
@@ -52,6 +53,7 @@ namespace QuickRuleTileEditor
 
             RefreshSelectedTile();
             SetDisplayMode(displayMode);
+            SetSpriteDisplaySize(spriteDisplaySize);
             RefreshEditorMode();
         }
 
@@ -147,13 +149,13 @@ namespace QuickRuleTileEditor
                 RefreshEditorMode();
             });
         }
-        
+
         private void RefreshEditorMode()
         {
             creationModeContainer.SetHidden(model.TileToEdit != null);
             editModeContainer.SetHidden(model.TileToEdit == null);
 
-            if (model.TileToEdit != null) 
+            if (model.TileToEdit != null)
             {
                 var infoLabel = editModeContainer.Query<Label>(className: "edit-info-label").First();
                 infoLabel.text = $"Editing \"{model.TileToEdit.name}\"";
@@ -239,6 +241,25 @@ namespace QuickRuleTileEditor
             root.EnableInClassList("tiles-display__pattern", mode == TilesDisplayMode.Pattern);
             root.EnableInClassList("tiles-display__mixed", mode == TilesDisplayMode.Mixed);
             root.EnableInClassList("tiles-display__sprite", mode == TilesDisplayMode.Sprite);
+        }
+
+        private void SetSpriteDisplaySize(int sizeInPX)
+        {
+            spriteDisplaySize = sizeInPX;
+
+            root.EnableInClassList("sprite-display-size__8", spriteDisplaySize == 8);
+            root.EnableInClassList("sprite-display-size__16", spriteDisplaySize == 16);
+            root.EnableInClassList("sprite-display-size__32", spriteDisplaySize == 32);
+            root.EnableInClassList("sprite-display-size__64", spriteDisplaySize == 64);
+
+            foreach (var image in spritesContainer.Query<Image>().ToList())
+            {
+                if (image.ClassListContains("sprite"))
+                {
+                    image.style.width = spriteDisplaySize;
+                    image.style.height = spriteDisplaySize;
+                }
+            }
         }
 
         private void OnAssetDrop(Object asset)
