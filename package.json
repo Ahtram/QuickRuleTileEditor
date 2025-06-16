@@ -1,15 +1,15 @@
 {
-    "name": "com.stalengd.quickruletileeditor",
-    "version": "0.3.0",
-    "displayName": "Quick Rule Tile Editor",
-    "description": "Easily and quickly create rule tiles in Unity.",
-    "unity": "2021.1",
-    "documentationUrl": "https://github.com/stalengd/QuickRuleTileEditor",
-   "keywords": [
-      "tile",
-      "editor"
-    ],
-    "author": {
-      "name": "StalenGD"
-    }
+  "name": "com.stalengd.quickruletileeditor",
+  "version": "0.3.2",
+  "displayName": "Quick Rule Tile Editor",
+  "description": "Easily and quickly create rule tiles in Unity.",
+  "unity": "2021.1",
+  "documentationUrl": "https://github.com/stalengd/QuickRuleTileEditor",
+  "keywords": [
+    "tile",
+    "editor"
+  ],
+  "author": {
+    "name": "StalenGD"
+  }
 }

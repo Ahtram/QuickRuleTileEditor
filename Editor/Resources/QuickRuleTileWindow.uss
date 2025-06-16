@@ -56,7 +56,7 @@
 }
 
 .sprites-container {
-    min-height: 86px;
+    min-height: 240px;
     background-color: rgba(0, 0, 0, 0.2);
     border-color: rgb(100, 100, 100);
     border-width: 1px;
